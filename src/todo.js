@@ -39,7 +39,9 @@ function paintList(text) {
     span.innerText = todoText;
 
     const toDoId = "todo" + (toDos.length + 1);
+    const todoClass = "todo-list__item";
 
+    li.classList.add(todoClass);
     li.id = toDoId;
     li.appendChild(span);
     li.appendChild(deleteBtn);
@@ -47,7 +49,8 @@ function paintList(text) {
 
     const todoObj = {
         text: text,
-        id: toDoId
+        id: toDoId,
+        class: todoClass
     };
 
     toDos.push(todoObj);

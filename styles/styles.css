@@ -2,7 +2,7 @@
 @import "reset.css";
 @import "clock.css";
 @import "greeting.css";
-@import "todos.css";
+@import "todo.css";
 
 * {
     box-sizing: border-box;

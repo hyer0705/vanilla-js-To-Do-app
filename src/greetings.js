@@ -68,6 +68,7 @@ function loadUserName() {
         // checkUserName();
     } else {
         todoContainer.classList.add(TODO_SHOWING_CL);
+        // remove to be continue...
         paintGreeting(loadedUserName);
     }
 }

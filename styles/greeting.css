@@ -1,0 +1,14 @@
+.greeting .greeting__form,
+.greeting .greeting__text{
+    display: none;
+}
+
+.greeting .greeting-showing{
+    display: block;
+}
+
+.greeting .greeting__text{
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+}

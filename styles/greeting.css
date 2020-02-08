@@ -1,5 +1,6 @@
 .greeting {
     width: 70%;
+    margin: 15px 0px 30px 0px;
 }
 
 .greeting .greeting__form,

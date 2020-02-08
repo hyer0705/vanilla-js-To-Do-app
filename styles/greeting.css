@@ -1,3 +1,7 @@
+.greeting {
+    width: 70%;
+}
+
 .greeting .greeting__form,
 .greeting .greeting__text{
     display: none;
@@ -11,4 +15,19 @@
     font-size: 30px;
     font-weight: 500;
     color: white;
+}
+
+.greeting__form input[type=text] {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid #a0a5ad;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.greeting__form input[type=text]:focus {
+    outline: none;
+    border-bottom: 1px solid #2799fa;
 }

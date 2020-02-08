@@ -7,6 +7,12 @@ const todoList = todoContainer.querySelector(".js-todo-list");
 
 const TODOS_LS = "toDos";
 
+const toDos = []; // todo list의 정보를 저장할 배열
+
+function saveToDos() {
+    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+}
+
 // li -> span -> delete button
 function paintList(text) {
     const todoText = text;
@@ -17,9 +23,20 @@ function paintList(text) {
     const span = document.createElement("span");
     span.innerText = todoText;
 
+    const toDoId = "todo" + (toDos.length + 1);
+
+    li.id = toDoId;
     li.appendChild(span);
     li.appendChild(deleteBtn);
     todoList.appendChild(li);
+
+    const todoObj = {
+        text: text,
+        id: toDoId
+    };
+
+    toDos.push(todoObj);
+    saveToDos();
 }
 
 function handleSubmit(event) {
@@ -30,9 +47,12 @@ function handleSubmit(event) {
 }
 
 function loadToDoList() {
-    const loadToDoList = localStorage.getItem(TODOS_LS);
-    if (loadToDoList !== null) {
-
+    const loadedList = localStorage.getItem(TODOS_LS);
+    if (loadedList !== null) {
+        parsedList = JSON.parse(loadedList);
+        parsedList.forEach(function (todo) {
+            paintList(todo.text);
+        });
     }
 }
 

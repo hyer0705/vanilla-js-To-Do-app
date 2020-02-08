@@ -7,7 +7,21 @@ const todoList = todoContainer.querySelector(".js-todo-list");
 
 const TODOS_LS = "toDos";
 
-const toDos = []; // todo list의 정보를 저장할 배열
+let toDos = []; // todo list의 정보를 저장할 배열
+
+// delete in HTML -> delete in local storage
+function deleteToDo(event) {
+    const clickedBtn = event.target;
+    const clickedLi = clickedBtn.parentNode;
+    todoList.removeChild(clickedLi);
+
+    const cleanToDos = toDos.filter(function (todo) {
+        return todo.id !== clickedLi.id;
+    });
+    toDos = cleanToDos;
+
+    saveToDos();
+}
 
 function saveToDos() {
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
@@ -19,6 +33,7 @@ function paintList(text) {
 
     const li = document.createElement("li");
     const deleteBtn = document.createElement("button");
+    deleteBtn.addEventListener("click", deleteToDo);
     deleteBtn.innerText = "✖";
     const span = document.createElement("span");
     span.innerText = todoText;

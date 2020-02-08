@@ -1,0 +1,7 @@
+.todo-container {
+    display: none;
+}
+
+.todo-showing {
+    display: block;
+}

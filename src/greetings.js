@@ -1,3 +1,5 @@
+todoContainer = document.querySelector(".js-todo-container");
+const TODO_SHOWING_CL = "todo-showing";
 
 const greetingContainer = document.querySelector(".js-greeting"),
     greetingForm = greetingContainer.querySelector(".js-username-form"),
@@ -30,6 +32,7 @@ function handleSubmit(event) {
     const inputName = greetingInput.value;
     paintGreeting(inputName);
     saveUserName(inputName);
+    todoContainer.classList.add(TODO_SHOWING_CL);
 }
 
 function askForUserName() {
@@ -48,11 +51,23 @@ function paintGreeting(name) {
     greetingText.innerText = `${greeting}! ${currentUserName}`;
 }
 
+function checkUserName() {
+    const isName = localStorage.getItem(USERNAME_LS);
+    // console.log(isName);
+    if (isName !== null) {
+        test.classList.add(TODO_SHOWING_CL);
+    } else {
+        test.classList.remove(TODO_SHOWING_CL);
+    }
+}
+
 function loadUserName() {
     const loadedUserName = localStorage.getItem(USERNAME_LS);
     if (loadedUserName === null) {
         askForUserName();
+        // checkUserName();
     } else {
+        todoContainer.classList.add(TODO_SHOWING_CL);
         paintGreeting(loadedUserName);
     }
 }

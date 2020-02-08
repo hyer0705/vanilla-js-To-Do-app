@@ -1,4 +1,4 @@
-const todoContainer = document.querySelector(".js-todo-container");
+let todoContainer = document.querySelector(".js-todo-container");
 
 const todoForm = todoContainer.querySelector(".js-todo-form"),
     todoInput = todoForm.querySelector(".js-todo-input");

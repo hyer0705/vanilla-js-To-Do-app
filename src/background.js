@@ -1,6 +1,6 @@
 const body = document.querySelector("body");
 
-const IMG_NUMBER = 6;
+const IMG_NUMBER = 5;
 const IMG_CL = "bg-img";
 
 function paintImg(num) {

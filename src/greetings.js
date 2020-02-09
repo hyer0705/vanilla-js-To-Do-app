@@ -59,6 +59,7 @@ function askForUserName() {
 function paintGreeting(name) {
     if (updateUserName) {
         greetingText.innerHTML = "";
+        updateUserName = false;
     }
 
     const currentUserName = name;

@@ -39,3 +39,11 @@ body {
     z-index: -1;
     animation: fadeImg 0.5s linear;
 }
+
+.made-by{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: 10px;
+    color: white;
+}

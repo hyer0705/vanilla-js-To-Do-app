@@ -24,6 +24,7 @@
     font-size: 30px;
     font-weight: 500;
     color: white;
+    position: relative;
 }
 
 .greeting__form input[type=text] {
@@ -39,4 +40,15 @@
 .greeting__form input[type=text]:focus {
     outline: none;
     border-bottom: 1px solid #2799fa;
+}
+
+.greeting__text span {
+    margin-right: 10px;
+}
+
+.greeting__text i {
+    font-size: 15px;
+    position: absolute;
+    bottom: 3px;
+    cursor: pointer;
 }

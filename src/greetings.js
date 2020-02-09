@@ -9,6 +9,16 @@ const greetingContainer = document.querySelector(".js-greeting"),
 const USERNAME_LS = "username";
 const GREETING_SHOWING_CL = "greeting-showing";
 
+let updateUserName = false;
+
+// show 'js-username-form' -> update localstorage
+function handleClickEdit(event) {
+    console.log("clicked!")
+    updateUserName = true;
+    greetingText.classList.remove(GREETING_SHOWING_CL);
+    askForUserName();
+}
+
 function getGreeting() {
     const date = getTime();
     const hours = date.getHours();
@@ -26,46 +36,52 @@ function saveUserName(name) {
     localStorage.setItem(USERNAME_LS, name);
 }
 
-function handleSubmit(event) {
+function handleSubmitGreet(event) {
     event.preventDefault();
-
     const inputName = greetingInput.value;
-    paintGreeting(inputName);
+
     saveUserName(inputName);
+    paintGreeting(inputName);
     todoContainer.classList.add(TODO_SHOWING_CL);
 }
 
 function askForUserName() {
     greetingForm.classList.add(GREETING_SHOWING_CL);
 
-    greetingForm.addEventListener("submit", handleSubmit);
+    greetingForm.addEventListener("submit", handleSubmitGreet);
 }
 
 function paintGreeting(name) {
+    if (updateUserName) {
+        greetingText.innerHTML = "";
+    }
+
     const currentUserName = name;
+
     const greeting = getGreeting();
+
+    const testText = `${greeting}! ${currentUserName}`;
+    const spanGreet = document.createElement("span");
+    spanGreet.innerText = testText;
+    spanGreet.classList.add("testDelete1");
+
+    const editIcon = document.createElement("i");
+    editIcon.classList.add("far");
+    editIcon.classList.add("fa-edit");
+    editIcon.classList.add("testDelete2");
+    editIcon.addEventListener("click", handleClickEdit);
 
     greetingForm.classList.remove(GREETING_SHOWING_CL);
     greetingText.classList.add(GREETING_SHOWING_CL);
 
-    greetingText.innerText = `${greeting}! ${currentUserName}`;
-}
-
-function checkUserName() {
-    const isName = localStorage.getItem(USERNAME_LS);
-    // console.log(isName);
-    if (isName !== null) {
-        test.classList.add(TODO_SHOWING_CL);
-    } else {
-        test.classList.remove(TODO_SHOWING_CL);
-    }
+    greetingText.appendChild(spanGreet);
+    greetingText.appendChild(editIcon);
 }
 
 function loadUserName() {
     const loadedUserName = localStorage.getItem(USERNAME_LS);
     if (loadedUserName === null) {
         askForUserName();
-        // checkUserName();
     } else {
         todoContainer.classList.add(TODO_SHOWING_CL);
         // remove to be continue...

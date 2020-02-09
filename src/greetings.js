@@ -13,9 +13,9 @@ let updateUserName = false;
 
 // show 'js-username-form' -> update localstorage
 function handleClickEdit(event) {
-    console.log("clicked!")
     updateUserName = true;
     greetingText.classList.remove(GREETING_SHOWING_CL);
+    greetingInput.value = "";
     askForUserName();
 }
 
@@ -40,9 +40,14 @@ function handleSubmitGreet(event) {
     event.preventDefault();
     const inputName = greetingInput.value;
 
-    saveUserName(inputName);
-    paintGreeting(inputName);
-    todoContainer.classList.add(TODO_SHOWING_CL);
+    if (inputName === '') {
+        alert("Input your name, please");
+    } else {
+        saveUserName(inputName);
+        paintGreeting(inputName);
+        todoContainer.classList.add(TODO_SHOWING_CL);
+    }
+
 }
 
 function askForUserName() {
@@ -63,12 +68,10 @@ function paintGreeting(name) {
     const testText = `${greeting}! ${currentUserName}`;
     const spanGreet = document.createElement("span");
     spanGreet.innerText = testText;
-    spanGreet.classList.add("testDelete1");
 
     const editIcon = document.createElement("i");
     editIcon.classList.add("far");
     editIcon.classList.add("fa-edit");
-    editIcon.classList.add("testDelete2");
     editIcon.addEventListener("click", handleClickEdit);
 
     greetingForm.classList.remove(GREETING_SHOWING_CL);
